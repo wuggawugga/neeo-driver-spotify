@@ -1,18 +1,30 @@
 {
-  "name": "neeo-driver-denon-avr",
+  "name": "neeo-driver-spotify",
   "version": "1.0.0",
-  "description": "NEEO driver for DENON AV receivers",
+  "description": "NEEO driver for Spotify",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "denon-client": "^0.2.4",
-    "neeo-sdk": "^0.53.8"
+    "bluebird": "^3.5.5",
+    "configstore": "^4.0.0",
+    "date-format": "^2.0.0",
+    "debug": "^4.1.1",
+    "dot-prop": "^5.0.0",
+    "express": "^4.17.1",
+    "neeo-sdk": "^0.53.8",
+    "netmask": "^1.0.6",
+    "path-to-regexp": "^3.0.0",
+    "spotify-web-api-node": "^4.0.0"
   },
   "scripts": {
-    "start": "neeo-sdk start"
+    "go": "node devices/index.js",
+    "start": "neeo-sdk start",
+    "clearConfig": "node scripts/clearConfig.js",
+    "showConfig": "node scripts/showConfig.js"
+  },
+  "devDependencies": {
+    "supports-color": "^6.1.0",
+    "var_dump": "^1.0.5"
   }
 }
