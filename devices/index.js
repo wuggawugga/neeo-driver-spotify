@@ -16,7 +16,7 @@ const controller = require('../lib/SpotifyController');
 const device = neeoapi.buildDevice('Spotify')
   .setManufacturer('Spotify')
   .setType('MUSICPLAYER')
-  .setDriverVersion(9)
+  .setDriverVersion(16)
   .addCapability('alwaysOn')
   .addAdditionalSearchToken('SDK')
   .addAdditionalSearchToken('Ppp')
@@ -26,7 +26,7 @@ const device = neeoapi.buildDevice('Spotify')
   .addButtonGroup('Transport')
   .addButtonGroup('Transport Scan')
 
-  .addButton({ name: 'INPUT HDMI', label: 'INPUT HDMI' })
+  .addButton({ name: 'refresh', label: 'Refresh' })
 
   // Then we wire the controller handler for these capabilities
   device.addButtonHandler((name, deviceId) => controller.onButtonPressed(name, deviceId));
@@ -42,22 +42,14 @@ const device = neeoapi.buildDevice('Spotify')
   });
 
 
-	device.addTextLabel({ name: 'LABEL_SPOTIFY_AUTHORIZED_STATUS', label: 'Authorization status', isLabelVisible: true }, (device_id) => controller.getTextLabel(device_id, 'LABEL_SPOTIFY_AUTHORIZED_STATUS') );
-  device.addTextLabel({ name: 'LABEL_NOW_PLAYING_ITEM', label: 'Now Playing Item', isLabelVisible: false }, (device_id) => kodiDevice.getTextLabel(device_id, 'LABEL_NOW_PLAYING_ITEM') );
-	device.addTextLabel({ name: 'LABEL_NOW_PLAYING_CONTEXT', label: 'Now Playing Context', isLabelVisible: false }, (device_id) => kodiDevice.getTextLabel(device_id, 'LABEL_NOW_PLAYING_CONTEXT') );
+	device.addTextLabel({ name: 'LABEL_AUTHORIZED_STATUS', label: 'Authorization Status', isLabelVisible: true }, (device_id) => controller.getTextLabel(device_id, 'LABEL_AUTHORIZED_STATUS') );
+  device.addTextLabel({ name: 'LABEL_CURRENT_DEVICE', label: 'Current Device', isLabelVisible: true }, (device_id) => kodiDevice.getTextLabel(device_id, 'LABEL_CURRENT_DEVICE') );
+  device.addTextLabel({ name: 'LABEL_CURRENT_USER', label: 'User', isLabelVisible: true }, (device_id) => kodiDevice.getTextLabel(device_id, 'LABEL_CURRENT_USER') );
+  device.addTextLabel({ name: 'LABEL_NOW_PLAYING_ITEM', label: 'Now Playing Item', isLabelVisible: true }, (device_id) => kodiDevice.getTextLabel(device_id, 'LABEL_NOW_PLAYING_ITEM') );
+	device.addTextLabel({ name: 'LABEL_NOW_PLAYING_CONTEXT', label: 'Now Playing Context', isLabelVisible: true }, (device_id) => kodiDevice.getTextLabel(device_id, 'LABEL_NOW_PLAYING_CONTEXT') );
 
   device.addImageUrl({ name: 'IMAGE_NOW_PLAYING_THUMBNAIL_LARGE', label: 'Now Playing Thumbnail Large', size: 'large' }, (device_id) => kodiDevice.getImageUrl(device_id, 'IMAGE_NOW_PLAYING_THUMBNAIL_LARGE'));
 	device.addImageUrl({ name: 'IMAGE_NOW_PLAYING_THUMBNAIL_SMALL', label: 'Now Playing Thumbnail Small', size: 'small' }, (device_id) => kodiDevice.getImageUrl(device_id, 'IMAGE_NOW_PLAYING_THUMBNAIL_SMALL'));
-
-
-/*
-  builder.addSlider({ name: 'SLIDER_VOLUME', label: 'Volume', range: [0, 100], unit: '%' }, { setter: (device_id, value) => kodiDevice.setSensorValue(device_id, 'SLIDER_VOLUME', value), getter: (device_id) => kodiDevice.getSensorValue(device_id, 'SLIDER_VOLUME') });
-	builder.addSwitch({ name: 'SWITCH_MUTE', label: 'Mute' }, { setter: (device_id, value) => kodiDevice.setSensorValue(device_id, 'SWITCH_MUTE', value), getter: (device_id) => kodiDevice.getSensorValue(device_id, 'SWITCH_MUTE') });
-	builder.addSwitch({ name: 'SWITCH_PLAYING', label: 'Playing' }, { setter: (device_id, value) => kodiDevice.setSensorValue(device_id, 'SWITCH_PLAYING', value), getter: (device_id) => kodiDevice.getSensorValue(device_id, 'SWITCH_PLAYING') });
-	builder.addSwitch({ name: 'SWITCH_SHUFFLE', label: 'Shuffle' }, { setter: (device_id, value) => kodiDevice.setSensorValue(device_id, 'SWITCH_SHUFFLE', value), getter: (device_id) => kodiDevice.getSensorValue(device_id, 'SWITCH_SHUFFLE') });
-	builder.addSwitch({ name: 'SWITCH_REPEAT', label: 'Repeat' }, { setter: (device_id, value) => kodiDevice.setSensorValue(device_id, 'SWITCH_REPEAT', value), getter: (device_id) => kodiDevice.getSensorValue(device_id, 'SWITCH_REPEAT') });
-
-*/
 
 device.registerSubscriptionFunction((updateCallback, optionalCallbacks) => controller.setNotificationCallbacks(updateCallback, optionalCallbacks, device.deviceidentifier) );
 device.registerInitialiseFunction(() => controller.initialise(device.deviceidentifier));
