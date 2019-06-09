@@ -1,7 +1,4 @@
 
-
-
-
 module.exports = {
 	page_size: 32,
 	locale: {
@@ -28,10 +25,15 @@ module.exports = {
 			limit: 5
 		}
 	},
+	playlists: [
+		{key: 'root.browse.charts.global_top_50', id: '37i9dQZEVXbMDoHDwVN2tF'},
+		{key: 'root.browse.charts.global_viral_50', id: '37i9dQZEVXbLiRSasKsNU9'},
+		{key: 'root.browse.charts.denmark_top_50', id: '37i9dQZEVXbL3J0k32lWnN'},
+		{key: 'root.browse.charts.denmark_viral_50', id: '37i9dQZEVXbMA8BIYDeMkD'},
+	],
 	auth: {
 		client_id: '1045e18758344e7cb73a06b08863f82b',
 		client_secret: 'fcd47558e83745298fdba2fbb24e1211',
-//		scopes: ['user-read-private', 'user-read-email'],
 		scopes: ['user-read-recently-played', 'user-top-read', 'user-library-read', 'playlist-read-private', 'playlist-read-collaborative', 'user-read-email', 'user-read-birthdate', 'user-read-private', 'user-read-playback-state', 'user-modify-playback-state', 'user-read-currently-playing', 'app-remote-control', 'streaming', 'user-follow-read'],
 		state_salt: 'salty brine',
 		redirect_url: 'http://localhost:3042/authorize',
