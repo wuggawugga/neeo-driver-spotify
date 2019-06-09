@@ -22,7 +22,8 @@
     "go": "node devices/index.js",
     "start": "neeo-sdk start",
     "clearConfig": "node scripts/clearConfig.js",
-    "showConfig": "node scripts/showConfig.js"
+    "showConfig": "node scripts/showConfig.js",
+    "getSeeds": "node scripts/getSeeds.js"
   },
   "devDependencies": {
     "supports-color": "^6.1.0",

@@ -9,6 +9,25 @@ module.exports = {
 		country: 'DK',
 		locale: 'da_DK'
 	},
+	recommendations: {
+		default: {
+			limit: 5
+		},
+		new: {
+			seed_artists: [ 'top_artists.1' ],
+			seed_genres: 'new-release',
+			limit: 5
+		},
+		top: {
+			seed_tracks: [ 'top_tracks.1', 'top_tracks.2' ],
+			seed_artists: [ 'top_artists.1' ],
+			limit: 5
+		},
+		acoustic: {
+			seed_genres: 'acoustic',
+			limit: 5
+		}
+	},
 	auth: {
 		client_id: '1045e18758344e7cb73a06b08863f82b',
 		client_secret: 'fcd47558e83745298fdba2fbb24e1211',
