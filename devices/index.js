@@ -55,7 +55,7 @@ device.registerSubscriptionFunction((updateCallback, optionalCallbacks) => contr
 device.registerInitialiseFunction(() => controller.initialise(device.deviceidentifier));
 
 
-neeoapi.discoverOneBrain(true).then((brain) => {
+neeoapi.discoverOneBrain(false).then((brain) => {
   // Determine which local NIC is in the same network as the brain
   let nics = os.networkInterfaces();
   for(const [name, nic] of Object.entries(nics)) {
@@ -75,8 +75,8 @@ neeoapi.discoverOneBrain(true).then((brain) => {
     }
   }
 }).catch(error => {
-    console.error('NEEO ERROR', error);
-    process.exit(1);
+    console.error('NEEO ERROR', error.message);
+//    process.exit(1);
 });
 
 module.exports = {

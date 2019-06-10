@@ -38,9 +38,11 @@ module.exports = {
 	},
 	localhost: {
 		http_port: 3043,
+/*
 		http_url: 'http://192.168.1.20:3043',
 		net: {
 			address: '192.168.1.20',
 		}
+*/
 	}
 }

@@ -2,7 +2,7 @@
   "name": "neeo-driver-spotify",
   "version": "1.0.0",
   "description": "NEEO driver for Spotify",
-  "main": "index.js",
+  "main": "devices/index.js",
   "author": "",
   "license": "MIT",
   "dependencies": {
