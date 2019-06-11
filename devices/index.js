@@ -56,6 +56,7 @@ device.registerInitialiseFunction(() => controller.initialise(device.deviceident
 
 
 neeoapi.discoverOneBrain(false).then((brain) => {
+    console.log('# SPOTIFY driver ready');
   // Determine which local NIC is in the same network as the brain
   let nics = os.networkInterfaces();
   for(const [name, nic] of Object.entries(nics)) {
