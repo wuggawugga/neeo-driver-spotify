@@ -11,7 +11,7 @@
     "configstore": "^4.0.0",
     "date-format": "^2.0.0",
     "debug": "^4.1.1",
-    "dot-prop": "^5.0.0",
+    "dot-prop": "^5.1.1",
     "express": "^4.17.1",
     "neeo-sdk": "^0.53.8",
     "netmask": "^1.0.6",
